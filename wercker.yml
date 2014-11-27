@@ -1,0 +1,14 @@
+box: wercker/nodejs@1.4.0
+build:
+  steps:
+    - script:
+        name: "Don't actually run any tests"
+        code: "echo lol"
+deploy:
+  steps:
+    - grampajoe/opsworks-deploy@0.0.1:
+        key-id: $AWS_ACCESS_KEY_ID
+        key-secret: $AWS_SECRET_ACCESS_KEY
+        app-id: $AWS_OPSWORKS_APP_ID
+        migrate: false
+        wait-until-deployed: true
